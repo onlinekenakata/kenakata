@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>আমার ডিজিটাল বাজার - হোম</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; padding-bottom: 120px; }
+        header { background: #232f3e; color: white; padding: 20px 15px; text-align: center; }
+        header h1 { margin: 0; font-size: 28px; }
+        header p { margin: 5px 0 0; font-size: 16px; color: #ffd814; font-weight: bold; }
+
+        .search-container { padding: 15px; background: #232f3e; display: flex; justify-content: center; border-bottom: 1px solid #3a4553; position: sticky; top: 0; z-index: 100; }
+        #searchInput { width: 90%; max-width: 600px; padding: 12px 20px; border-radius: 25px; border: none; outline: none; font-size: 16px; }
+
+        /* মেইন কন্টেইনার এবং গ্রিড ডিজাইন */
+        .container { 
+            padding: 20px; 
+            max-width: 1400px; /* কন্টেইনার বড় করা হলো যাতে ৪টি ফিট হয় */
+            margin: auto;
+            display: grid; 
+            gap: 20px; 
+        }
+
+        /* কম্পিউটারে যখন স্ক্রিন বড় (৯৯২ পিক্সেলের বেশি) তখন ৪টি কলাম নিশ্চিত করা হলো */
+        @media screen and (min-width: 992px) {
+            .container {
+                grid-template-columns: repeat(4, 1fr) !important;
+            }
+        }
+
+        /* ট্যাবলেটে ২টি কলাম */
+        @media screen and (min-width: 600px) and (max-width: 991px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* মোবাইলে ১টি কলাম (আপনার ইচ্ছা অনুযায়ী সিঙ্গেল) */
+        @media screen and (max-width: 599px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* প্রোডাক্ট কার্ড ডিজাইন */
+        .product-card { background: white; border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.1); text-decoration: none; color: black; transition: 0.3s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); }
+        .product-card img { width: 100%; height: 220px; object-fit: contain; background: #fff; border-radius: 8px; margin-bottom: 10px; }
+        .product-card h3 { font-size: 18px; margin: 10px 0; color: #232f3e; flex-grow: 1; }
+        .price { color: #B12704; font-weight: bold; font-size: 20px; margin-bottom: 15px; }
+        .view-btn { background: #ffd814; border: none; padding: 12px; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+        /* কার্ট এবং অন্যান্য স্টাইল আগের মতোই রাখা হয়েছে */
+        .cart-status { position: fixed; bottom: 85px; right: 20px; background: #B12704; color: white; padding: 15px 25px; border-radius: 35px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-content { background: white; margin: 15% auto; padding: 30px; border-radius: 20px; width: 85%; max-width: 400px; text-align: center; }
+        .id-badge { background: #ffeb3b; padding: 10px; border-radius: 8px; font-weight: bold; display: block; margin: 15px 0; border: 1px dashed #000; }
+        footer { background: #232f3e; color: white; text-align: center; padding: 15px; position: fixed; bottom: 0; width: 100%; }
+        .call-btn { background: #28a745; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; width: 45%; }
+        .cancel-btn { background: #dc3545; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 45%; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>আমার ডিজিটাল বাজার</h1>
+    <p>সেরা পণ্য, সঠিক দাম</p>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="আপনার পছন্দের পণ্যটি খুঁজুন...">
+</div>
+
+<div class="container">
+    <a href="product1.html" class="product-card">
+        <img src="1.jpg" alt="Product">
+        <h3>স্মার্ট ওয়াচ - প্রিমিয়াম এডিশন</h3>
+        <p class="price">৳ ২,৫০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product2.html" class="product-card">
+        <img src="2.jpg" alt="Product">
+        <h3>ব্লুটুথ হেডফোন</h3>
+        <p class="price">৳ ১,২০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product3.html" class="product-card">
+        <img src="3.jpg" alt="Product">
+        <h3>পাওয়ার ব্যাংক</h3>
+        <p class="price">৳ ১,৮০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="#" class="product-card">
+        <img src="4.jpg" alt="Product">
+        <h3>ফাস্ট চার্জার</h3>
+        <p class="price">৳ ৯০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+</div>
+
+<div class="container">
+    <a href="product1.html" class="product-card">
+        <img src="1.jpg" alt="Product">
+        <h3>স্মার্ট ওয়াচ - প্রিমিয়াম এডিশন</h3>
+        <p class="price">৳ ২,৫০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product2.html" class="product-card">
+        <img src="2.jpg" alt="Product">
+        <h3>ব্লুটুথ হেডফোন</h3>
+        <p class="price">৳ ১,২০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product3.html" class="product-card">
+        <img src="3.jpg" alt="Product">
+        <h3>পাওয়ার ব্যাংক</h3>
+        <p class="price">৳ ১,৮০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="#" class="product-card">
+        <img src="4.jpg" alt="Product">
+        <h3>ফাস্ট চার্জার</h3>
+        <p class="price">৳ ৯০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+</div>
+
+<div class="container">
+    <a href="product1.html" class="product-card">
+        <img src="1.jpg" alt="Product">
+        <h3>স্মার্ট ওয়াচ - প্রিমিয়াম এডিশন</h3>
+        <p class="price">৳ ২,৫০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product2.html" class="product-card">
+        <img src="2.jpg" alt="Product">
+        <h3>ব্লুটুথ হেডফোন</h3>
+        <p class="price">৳ ১,২০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="product3.html" class="product-card">
+        <img src="3.jpg" alt="Product">
+        <h3>পাওয়ার ব্যাংক</h3>
+        <p class="price">৳ ১,৮০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+
+    <a href="#" class="product-card">
+        <img src="4.jpg" alt="Product">
+        <h3>ফাস্ট চার্জার</h3>
+        <p class="price">৳ ৯০০</p>
+        <button class="view-btn">বিস্তারিত দেখুন</button>
+    </a>
+</div>
+
+<div class="cart-status" onclick="openPopup()">ব্যাগ: <span id="cartCount">০</span> টি পণ্য</div>
+
+<div id="callModal" class="modal">
+    <div class="modal-content">
+        <h3>অর্ডার লিস্ট</h3>
+        <div id="orderSummary" class="id-badge">কোনো পণ্য নেই</div>
+        <p>কল করতে নিচের বাটনে চাপ দিন:</p>
+        <p style="font-size: 20px; font-weight: bold; color: #28a745;">০৯৬৩৮০২৩১১৯</p>
+        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <a href="tel:09638023119" class="call-btn">Call Now</a>
+            <button onclick="closePopup()" class="cancel-btn">Cancel</button>
+        </div>
+        <p onclick="clearCart()" style="color:red; margin-top:20px; cursor:pointer; text-decoration:underline;">লিস্ট খালি করুন</p>
+    </div>
+</div>
+
+<footer><p>&copy; ২০২৬ | আমার ডিজিটাল বাজার</p></footer>
+
+<script>
+    function updateCart() {
+        let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+        document.getElementById('cartCount').innerText = cart.length;
+        document.getElementById('orderSummary').innerText = cart.length > 0 ? cart.join(", ") : "কোনো পণ্য নেই";
+    }
+    function openPopup() { document.getElementById('callModal').style.display = "block"; updateCart(); }
+    function closePopup() { document.getElementById('callModal').style.display = "none"; }
+    function clearCart() { localStorage.removeItem('myShopCart'); updateCart(); closePopup(); }
+    window.onload = updateCart;
+</script>
+</body>
+</html>

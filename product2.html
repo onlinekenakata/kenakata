@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>বিস্তারিত - স্মার্ট ওয়াচ</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; padding-bottom: 120px; }
+        header { background: #232f3e; color: white; padding: 20px 15px; text-align: center; }
+        header h1 { margin: 0; font-size: 24px; }
+        header p { margin: 5px 0 0; font-size: 14px; color: #ffd814; font-weight: bold; }
+
+        .search-container { padding: 10px; background: #232f3e; display: flex; justify-content: center; }
+        #searchInput { width: 85%; max-width: 400px; padding: 10px; border-radius: 25px; border: none; outline: none; }
+
+        .container { padding: 20px; max-width: 800px; margin: auto; }
+        .product-detail { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        
+        .main-img-container { text-align: center; background: #fff; border-radius: 10px; border: 1px solid #ddd; padding: 10px; }
+        .main-img { width: 100%; max-height: 400px; object-fit: contain; }
+        
+        .thumb-container { display: flex; gap: 10px; margin-top: 15px; justify-content: center; }
+        .thumb { width: 70px; height: 70px; object-fit: contain; border-radius: 5px; cursor: pointer; border: 2px solid #ddd; background: #fff; }
+        .thumb:hover { border-color: #ffd814; }
+
+        h2 { color: #232f3e; margin: 20px 0 5px; }
+        .product-id { color: #777; font-weight: bold; margin-bottom: 10px; }
+        .price { color: #B12704; font-size: 26px; font-weight: bold; }
+        
+        .description-box { line-height: 1.6; background: #f9f9f9; padding: 15px; border-radius: 8px; border-left: 4px solid #ffd814; margin-top: 20px; }
+        .seller-message-box { margin-top: 15px; padding: 15px; background: #e7f3fe; border-radius: 8px; border-left: 4px solid #2196F3; }
+
+        .btn-group { display: flex; gap: 10px; margin-top: 25px; }
+        .add-btn { background: #232f3e; color: white; border: none; padding: 15px; flex: 1; border-radius: 5px; font-weight: bold; cursor: pointer; }
+        .list-btn { background: #ffd814; border: none; padding: 15px; flex: 1; border-radius: 5px; font-weight: bold; cursor: pointer; }
+
+        .cart-status { position: fixed; bottom: 85px; right: 20px; background: #B12704; color: white; padding: 15px 25px; border-radius: 35px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        
+        footer { background: #232f3e; color: white; text-align: center; padding: 15px; position: fixed; bottom: 0; width: 100%; }
+        
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
+        .modal-content { background: white; margin: 15% auto; padding: 30px; border-radius: 20px; width: 85%; max-width: 400px; text-align: center; }
+        .id-badge { background: #ffeb3b; padding: 10px; border-radius: 8px; font-weight: bold; display: block; margin: 15px 0; border: 1px dashed #000; }
+        .call-btn-pop { background: #28a745; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; width: 45%; }
+        .cancel-btn-pop { background: #dc3545; color: white; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; width: 45%; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>আমার ডিজিটাল বাজার</h1>
+    <p>সেরা পণ্য, সঠিক দাম</p>
+</header>
+
+<div class="search-container">
+    <input type="text" id="searchInput" onkeyup="location.href='index.html'" placeholder="আপনার পছন্দের পণ্যটি খুঁজুন...">
+</div>
+
+<div class="container">
+    <a href="index.html" style="text-decoration: none; color: #007185; font-weight: bold;">← হোমপেজে ফিরে যান</a>
+    <div class="product-detail">
+        <div class="main-img-container">
+            <img id="mainImg" src="1.jpg" class="main-img">
+        </div>
+        <div class="thumb-container">
+            <img src="1.jpg" class="thumb" onclick="document.getElementById('mainImg').src=this.src">
+            <img src="2.jpg" class="thumb" onclick="document.getElementById('mainImg').src=this.src">
+            <img src="3.jpg" class="thumb" onclick="document.getElementById('mainImg').src=this.src">
+        </div>
+
+        <h2>স্মার্ট ওয়াচ - প্রিমিয়াম এডিশন</h2>
+        <p class="product-id">Product ID: #SW-2026-002</p>
+        <p class="price">৳ ২,৫০০</p>
+        
+        <div class="description-box">
+            <b>পণ্যের বৈশিষ্ট্য:</b><br>
+            - ফুল টাচ লার্জ ডিসপ্লে, ৭ দিনের ব্যাটারি ব্যাকআপ এবং ওয়াটার রেজিস্ট্যান্ট।
+        </div>
+
+        <div class="seller-message-box">
+            <p><b>বিক্রেতার বার্তা:</b> সরাসরি কল করে সব পণ্য একসাথে অর্ডার করুন।</p>
+        </div>
+
+        <div class="btn-group">
+            <button class="add-btn" onclick="addToList('#SW-2026-002')">তালিকায় যোগ করুন</button>
+            <button class="list-btn" onclick="openPopup()">অর্ডার লিস্ট</button>
+        </div>
+    </div>
+</div>
+
+<div class="cart-status" onclick="openPopup()">ব্যাগ: <span id="cartCount">০</span> টি পণ্য</div>
+
+<div id="callModal" class="modal">
+    <div class="modal-content">
+        <h3>অর্ডার লিস্ট</h3>
+        <div id="orderSummary" class="id-badge">কোনো পণ্য নেই</div>
+        <p>সরাসরি কল করতে নিচের বাটনে চাপ দিন:</p>
+        <p style="font-size: 20px; font-weight: bold; color: #28a745;">০৯৬৩৮০২৩১১৯</p>
+        <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center;">
+            <a href="tel:09638023119" class="call-btn-pop">Call Now</a>
+            <button onclick="closePopup()" class="cancel-btn-pop">Cancel</button>
+        </div>
+        <p onclick="clearCart()" style="color:red; margin-top:20px; cursor:pointer; text-decoration:underline;">লিস্ট খালি করুন</p>
+    </div>
+</div>
+
+<footer><p>&copy; ২০২৬ | আমার ডিজিটাল বাজার</p></footer>
+
+<script>
+    function updateCart() {
+        let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+        document.getElementById('cartCount').innerText = cart.length;
+        document.getElementById('orderSummary').innerText = cart.length > 0 ? cart.join(", ") : "কোনো পণ্য নেই";
+    }
+    function addToList(id) {
+        let cart = JSON.parse(localStorage.getItem('myShopCart')) || [];
+        if (!cart.includes(id)) { cart.push(id); localStorage.setItem('myShopCart', JSON.stringify(cart)); alert("তালিকায় যোগ হয়েছে!"); updateCart(); }
+        else { alert("এটি আগেই তালিকায় আছে!"); }
+    }
+    function openPopup() { document.getElementById('callModal').style.display = "block"; updateCart(); }
+    function closePopup() { document.getElementById('callModal').style.display = "none"; }
+    function clearCart() { localStorage.removeItem('myShopCart'); updateCart(); closePopup(); }
+    window.onload = updateCart;
+</script>
+</body>
+</html>
